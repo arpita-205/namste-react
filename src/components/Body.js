@@ -1,67 +1,4 @@
-import ReactDOM from "react-dom/client";
-import React from "react";
-
-/**
- * Header
- *  - Logo
- *  - Nav Items
- * Body
- *  - Search
- *  - RestaurantContainer
- *       - RestaurantCard
- *          -img
- *          -name of res ,star rating,cuisine,delivery time
- * Footer
- *  - Licence
- *  -  Address
- *  - Contact
- */
-
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo-container">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQQ9W98Mg2_uVUCWTJY_WkT0adfjOEXCvHRQ&usqp=CAU"
-          className="logo"
-        />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-const RestaurantCard = (props) => {
-  const {
-    name,
-    cuisines,
-    avgRatingString,
-    sla,
-    cloudinaryImageId,
-    costForTwo,
-  } = props?.resData?.info;
-  return (
-    <div className="res-card">
-      <img
-        className="res-logo"
-        src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossn x.x.xy,f_auto,q_auto,w_660/${cloudinaryImageId}`}
-        alt="res-log"
-      />
-      <h3>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRatingString}</h4>
-      <h4>{costForTwo}</h4>
-      <h4>{sla.deliveryTime} min</h4>
-    </div>
-  );
-};
-
+import RestaurantCard from "./RestaurantCard";
 const resList = [
   {
     info: {
@@ -1520,6 +1457,7 @@ const resList = [
     },
   },
 ];
+
 const Body = () => {
   return (
     <div className="body">
@@ -1529,23 +1467,13 @@ const Body = () => {
           <RestaurantCard resData={resObj} key={resObj.info.id} />
         ))}
         {/* <RestaurantCard
-          resName="KFC"
-          cuisine="Burger, Fast Food"
-          rating="4.0 stars"
-          delTime="20 min"
-        /> */}
+            resName="KFC"
+            cuisine="Burger, Fast Food"
+            rating="4.0 stars"
+            delTime="20 min"
+          /> */}
       </div>
     </div>
   );
 };
-const AppLayout = () => {
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+export default Body;
