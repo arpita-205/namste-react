@@ -9,7 +9,7 @@ const RestaurantCard = (props) => {
 
   return (
     <div
-      className="bg-orange-100 w-72 border-2 border-gray-200 p-3 m-3 rounded-2xl cursor-pointer hover:shadow-2xl"
+      className="bg-orange-100 w-72 border-2 border-gray-200 p-3 rounded-2xl cursor-pointer hover:shadow-2xl"
       onClick={() => navigate(`/restaurant/${id}`)}
     >
       <img

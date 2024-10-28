@@ -13,6 +13,7 @@ const Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
   const fetchData = async () => {
     const data = await fetch(DATA_URL);
 
@@ -25,6 +26,16 @@ const Body = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+  useEffect(() => {
+    if (!searchText) {
+      setFilteredRes(listOfRestaurants);
+    } else {
+      const filteredList = listOfRestaurants?.filter((res) =>
+        res?.info?.name.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setFilteredRes(filteredList);
+    }
+  }, [searchText]);
 
   return listOfRestaurants?.length === 0 ? (
     <Shimmer />
@@ -34,21 +45,15 @@ const Body = () => {
         <div className="search">
           <input
             type="text"
-            className="search-box  border border-black rounded p-2 m-2"
+            className="search-box  border border-black rounded p-2"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button
-            className="search-button"
-            onClick={() => {
-              const filteredList = listOfRestaurants?.filter((res) =>
-                res?.info?.name.toLowerCase().includes(searchText.toLowerCase())
-              );
-              setFilteredRes(filteredList);
-            }}
-          >
+          {/* <button
+            className="search-button p-2 m-2"
+            
             Search
-          </button>
+          </button> */}
         </div>
         <button
           className="filter-btn"
@@ -61,7 +66,7 @@ const Body = () => {
           Top Rated Restaurants
         </button>
       </div>
-      <div className="flex flex-wrap gap-8">
+      <div className="grid grid-cols-5  gap-8">
         {filteredRes?.map((resObj) =>
           resObj?.info?.avgRating > 4.3 ? (
             <RestaurantCardBestRated resData={resObj} key={resObj.info.id} />
