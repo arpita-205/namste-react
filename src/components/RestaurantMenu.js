@@ -30,11 +30,17 @@ const RestaurantMenu = () => {
       </div>
 
       {categories?.map((data, index) => (
-        <RestaurantCategory
-          resCategoryData={data?.card?.card}
-          setShowIndex={() => setShowIndex(index)}
-          showDetails={index === showIndex ? true : false}
-        />
+        <>
+          <RestaurantCategory
+            resCategoryData={data?.card?.card}
+            setShowIndex={() =>
+              setShowIndex(showIndex === index ? null : index)
+            }
+            index={index}
+            showIndex={showIndex}
+            showDetails={index === showIndex ? true : false}
+          />
+        </>
       ))}
     </div>
   );
