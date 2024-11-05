@@ -128,6 +128,21 @@ const TimeSheet = () => {
     }
   }, [course, searchTask]);
 
+  const marks = [
+    {
+      value: 0,
+      label: "Not Started",
+    },
+    {
+      value: 50,
+      label: "In Progress",
+    },
+    {
+      value: 100,
+      label: "Completed",
+    },
+  ];
+
   return (
     <div className="flex flex-col items-center justify-center h-full pt-40 px-32 gap-4">
       <div className="flex w-full items-center gap-20">
@@ -174,13 +189,17 @@ const TimeSheet = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredData.map((row) => (
+            {filteredData.map((row, index) => (
               <TableRow
-                key={row.name}
+                key={index}
+                onClick={() => {
+                  console.log(index, "index");
+                }}
                 sx={{
                   "&:last-child td, &:last-child th": { border: 0 },
                   "& .MuiTableCell-root": {
                     fontSize: "16px",
+                    cursor: "pointer",
                   },
                 }}
               >
@@ -189,7 +208,7 @@ const TimeSheet = () => {
                 </TableCell>
                 <TableCell align="left">{row.task}</TableCell>
                 <TableCell align="right" sx={{ width: "auto" }}>
-                  <StatusTimeline status={row.status} />
+                  <StatusTimeline marks={marks} />
                 </TableCell>
                 <TableCell align="right">{row.timeComplexity}</TableCell>
               </TableRow>
