@@ -9,6 +9,10 @@ const Body = () => {
   const [filteredRes, setFilteredRes] = useState([]);
   const [searchText, setSearchText] = useState("");
   const RestaurantCardBestRated = withBestRatedLabel(RestaurantCard);
+  const [isClearFilter, setIsClearFilter] = useState({
+    search: false,
+    topRatedRes: false,
+  });
 
   useEffect(() => {
     fetchData();
@@ -18,7 +22,7 @@ const Body = () => {
     const data = await fetch(DATA_URL);
 
     const json = await data.json();
-    console.log(json, "json");
+
     setListOfRestaurants(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -30,7 +34,7 @@ const Body = () => {
     if (!searchText) {
       setFilteredRes(listOfRestaurants);
     } else {
-      const filteredList = listOfRestaurants?.filter((res) =>
+      const filteredList = filteredRes?.filter((res) =>
         res?.info?.name.toLowerCase().includes(searchText.toLowerCase())
       );
       setFilteredRes(filteredList);
@@ -47,7 +51,13 @@ const Body = () => {
             type="text"
             className="search-box  border border-black rounded p-2"
             value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+              setIsClearFilter({
+                ...isClearFilter,
+                search: true,
+              });
+            }}
           />
           {/* <button
             className="search-button p-2 m-2"
@@ -58,13 +68,33 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            setListOfRestaurants(
-              listOfRestaurants?.filter((arr) => arr.info.avgRating > 4)
+            setIsClearFilter({
+              ...isClearFilter,
+              topRatedRes: true,
+            });
+            setFilteredRes(
+              filteredRes?.filter((arr) => arr.info.avgRating > 4.3)
             );
           }}
         >
           Top Rated Restaurants
         </button>
+        {(isClearFilter.search || isClearFilter.topRatedRes) && (
+          <span
+            aria-describedby="Clear Filter"
+            className="cursor-pointer"
+            onClick={() => {
+              setIsClearFilter({
+                search: false,
+                topRatedRes: false,
+              });
+              setFilteredRes(listOfRestaurants);
+              setSearchText("");
+            }}
+          >
+            ❌
+          </span>
+        )}
       </div>
       <div className="grid grid-cols-5  gap-8">
         {filteredRes?.map((resObj) =>

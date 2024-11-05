@@ -19,6 +19,7 @@ const Header = () => {
         <Link to={"/contact"}>Contact</Link>
         <Link to={"/cart"}>Cart</Link>
         <Link to={"/grocery"}>Grocery</Link>
+        <Link to={"/time-sheet"}>Time Sheet</Link>
 
         <button
           className="login"

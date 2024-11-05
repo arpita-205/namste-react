@@ -8,6 +8,11 @@ import AboutUs from "./components/AboutUs";
 import Contact from "./components/Contact";
 import Cart from "./components/Cart";
 import RestaurantMenu from "./components/RestaurantMenu";
+import TimeSheet from "./components/TimeSheet.js";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 
 const AppLayout = () => {
   return (
@@ -47,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/restaurant/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/time-sheet",
+        element: <TimeSheet />,
       },
       {
         path: "/grocery",
