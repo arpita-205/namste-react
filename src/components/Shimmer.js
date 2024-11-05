@@ -2,25 +2,22 @@ import React from "react";
 
 const Shimmer = () => {
   return (
-    <div className="shimmer-container">
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
+    <div className="flex flex-wrap pt-20">
+      <div className="w-52 h-52 bg-gray-300 m-5"></div>
+      <div className="w-52 h-52 bg-gray-300 m-5"></div>
+      <div className="w-52 h-52 bg-gray-300 m-5"></div>
+      <div className="w-52 h-52 bg-gray-300 m-5"></div>
+      <div className="w-52 h-52 bg-gray-300 m-5"></div>
+      <div className="w-52 h-52 bg-gray-300 m-5"></div>
+      <div className="w-52 h-52 bg-gray-300 m-5"></div>
+      <div className="w-52 h-52 bg-gray-300 m-5"></div>
+      <div className="w-52 h-52 bg-gray-300 m-5"></div>
+      <div className="w-52 h-52 bg-gray-300 m-5"></div>
+      <div className="w-52 h-52 bg-gray-300 m-5"></div>
+      <div className="w-52 h-52 bg-gray-300 m-5"></div>
+      <div className="w-52 h-52 bg-gray-300 m-5"></div>
+      <div className="w-52 h-52 bg-gray-300 m-5"></div>
+      <div className="w-52 h-52 bg-gray-300 m-5"></div>
     </div>
   );
 };

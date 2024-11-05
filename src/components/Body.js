@@ -41,7 +41,7 @@ const Body = () => {
     }
   }, [searchText]);
 
-  return listOfRestaurants?.length === 0 ? (
+  return filteredRes?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="px-20 py-4">
