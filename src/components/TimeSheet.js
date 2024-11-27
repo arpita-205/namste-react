@@ -13,82 +13,255 @@ import {
   MenuItem,
   Select,
   TextField,
-  Typography,
 } from "@mui/material";
 import StatusTimeline from "./StatusTimeline";
+import { useNavigate } from "react-router-dom";
 
-const columns = [
+export const columns = [
   { name: "Sr No" },
   { name: "Task", alignment: "left" },
   { name: "Status", alignment: "center" },
   { name: "Time complexity", alignment: "right" },
 ];
-const reactData = [
+export const reactData = [
   {
     id: "1",
     task: "Components, JSX, State, Props",
     status: "Completed",
     timeComplexity: "on Time",
+    subTasks: [
+      {
+        id: "1",
+        task: "Introduction to React",
+        status: "Completed",
+        timeComplexity: "on Time",
+        subTasks: [
+          {
+            id: "1",
+            task: "Rendering, Props, State",
+            status: "Completed",
+            timeComplexity: "on Time",
+          },
+          {
+            id: "2",
+            task: "Components, JSX",
+            status: "Completed",
+            timeComplexity: "on Time",
+          },
+          {
+            id: "3",
+            task: "State, Props",
+            status: "Completed",
+            timeComplexity: "on Time",
+          },
+        ],
+      },
+    ],
   },
   {
     id: "2",
     task: "Hooks (useState, useEffect, useMemo, useCallback), Context API",
     status: "Completed",
     timeComplexity: "on Time",
+    subTasks: [
+      {
+        id: "1",
+        task: "useState, useEffect",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+      {
+        id: "2",
+        task: "Context API",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+      {
+        id: "3",
+        task: "Custom Hooks",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+    ],
   },
   {
     id: "3",
     task: "Advanced: Custom Hooks, Optimization",
     status: "Completed",
     timeComplexity: "on Time",
+    subTasks: [
+      {
+        id: "1",
+        task: "Custom Hooks",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+      {
+        id: "2",
+        task: "Advanced",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+      {
+        id: "3",
+        task: "Optimization",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+    ],
   },
   {
     id: "4",
     task: "React Router, Error Boundaries, Suspense",
     status: "Completed",
     timeComplexity: "on Time",
+    subTasks: [
+      {
+        id: "1",
+        task: "React Router",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+      {
+        id: "2",
+        task: "Error Boundaries",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+      {
+        id: "3",
+        task: "Suspense",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+    ],
   },
   {
     id: "5",
     task: "High order components,test cases",
     status: "Completed",
     timeComplexity: "on Time",
+    subTasks: [
+      {
+        id: "1",
+        task: "High order components",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+      {
+        id: "2",
+        task: "Testing",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+    ],
   },
 ];
-const nodeData = [
+export const nodeData = [
   {
     id: "1",
     task: "Introduction to Node.js, npm, REST APIs",
     status: "Completed",
     timeComplexity: "on Time",
+    subTasks: [
+      {
+        id: "1",
+        task: "Introduction to Node.js",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+      {
+        id: "2",
+        task: "npm",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+      {
+        id: "3",
+        task: "REST APIs",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+    ],
   },
   {
     id: "2",
     task: "Understanding middlewares, basic routing",
     status: "Completed",
     timeComplexity: "on Time",
+    subTasks: [
+      {
+        id: "1",
+        task: "Middlewares",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+      {
+        id: "2",
+        task: "Basic routing",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+    ],
   },
   {
     id: "3",
     task: "Authentication & Authorization (JWT, OAuth)",
     status: "Completed",
     timeComplexity: "on Time",
+    subTasks: [
+      {
+        id: "1",
+        task: "Authentication",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+      {
+        id: "2",
+        task: "Authentication",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+    ],
   },
   {
     id: "4",
     task: "Database integration (MongoDB or SQL)",
     status: "Completed",
     timeComplexity: "on Time",
+    subTasks: [
+      {
+        id: "1",
+        task: "Database integration",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+    ],
   },
   {
     id: "5",
     task: "Error handling, Logging, Debugging",
     status: "Completed",
     timeComplexity: "on Time",
+    subTasks: [
+      {
+        id: "1",
+        task: "Error handling",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+      {
+        id: "2",
+        task: "Error handling",
+        status: "Completed",
+        timeComplexity: "on Time",
+      },
+    ],
   },
 ];
 
 const TimeSheet = () => {
+  const navigate = useNavigate();
   const [searchTask, setSearchTask] = useState("");
   const [course, setCourse] = useState("react");
 
@@ -144,7 +317,7 @@ const TimeSheet = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center h-full pt-40 px-32 gap-4">
+    <div className="flex flex-col items-center justify-center h-full pt-20 px-32 gap-4">
       <div className="flex w-full items-center gap-20">
         <TextField
           label="Search Task"
@@ -188,12 +361,13 @@ const TimeSheet = () => {
               ))}
             </TableRow>
           </TableHead>
+
           <TableBody>
-            {filteredData.map((row, index) => (
+            {filteredData?.map((row, index) => (
               <TableRow
                 key={index}
                 onClick={() => {
-                  console.log(index, "index");
+                  navigate(`/time-sheet/${course}/${row.task}/${row.id}`);
                 }}
                 sx={{
                   "&:last-child td, &:last-child th": { border: 0 },

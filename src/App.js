@@ -13,6 +13,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import TimeSheetStats from "./components/TimeSheetStats.js";
 
 const AppLayout = () => {
   return (
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "/time-sheet",
         element: <TimeSheet />,
+      },
+      {
+        path: "/time-sheet/:courseType/:task/:taskId",
+        element: <TimeSheetStats />,
       },
       {
         path: "/grocery",
