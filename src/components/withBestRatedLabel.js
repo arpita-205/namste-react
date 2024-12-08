@@ -3,7 +3,7 @@ import React from "react";
 const withBestRatedLabel = (RestaurantCard) => {
   return (props) => {
     return (
-      <div className="relative">
+      <div className="relative h-auto">
         <label className="absolute top-5 text-white bg-black rounded-md p-1">
           Best Rated
         </label>

@@ -44,7 +44,7 @@ const Body = () => {
   return filteredRes?.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="px-20 py-4">
+    <div className="px-10 py-4">
       <div className="flex items-center gap-4 py-10">
         <div className="search">
           <input
@@ -96,7 +96,7 @@ const Body = () => {
           </span>
         )}
       </div>
-      <div className="grid grid-cols-5  gap-8">
+      <div className="grid grid-cols-5 gap-8">
         {filteredRes?.map((resObj) =>
           resObj?.info?.avgRating > 4.3 ? (
             <RestaurantCardBestRated resData={resObj} key={resObj.info.id} />

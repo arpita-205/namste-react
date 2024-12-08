@@ -9,8 +9,9 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { nodeData, reactData } from "./TimeSheet";
+
 import { useParams, useSearchParams } from "react-router-dom";
+import useTimesheetStore from "../store/useTimesheetStore";
 
 ChartJS.register(
   CategoryScale,
@@ -22,6 +23,7 @@ ChartJS.register(
 );
 
 const TimeSheetStats = () => {
+  const { reactData, nodeData } = useTimesheetStore();
   const { taskId, courseType } = useParams();
   const extractSubTasksForObject = (data) => {
     const selectedObject = data.find((item) => item.id === taskId?.toString());
